@@ -1,10 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
+using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 public class InventorySlot : MonoBehaviour, IDropHandler
 {
+    public UnityEngine.UI.Image image;
+    public Color SelectedColor,NotSelectedColor;
+
+    private void Awake()
+    {
+        Deselect();
+    }
+
+    public void Select()
+    {
+        image.color = SelectedColor; 
+    }
+    public void Deselect()
+    {
+        image.color = NotSelectedColor; 
+    }
     public void OnDrop(PointerEventData eventData)
     {
         if(transform.childCount == 0)
