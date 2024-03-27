@@ -7,6 +7,7 @@ using UnityEngine;
 public class Item : ScriptableObject
 {
     [Header("Only Gameplay")]
+    public int id;
     public ItemType type;
     public GameObject Asset;
     public ActionType actionType;
@@ -14,6 +15,8 @@ public class Item : ScriptableObject
     public bool stackable = true;
     [Header("Both")]
     public Sprite image;
+
+    public bool Automatic;
 
 
     public enum ItemType

@@ -9,6 +9,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler
 {
     public UnityEngine.UI.Image image;
     public Color SelectedColor,NotSelectedColor;
+    
 
     private void Awake()
     {

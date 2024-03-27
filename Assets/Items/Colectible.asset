@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27894dda386dc4e418ae247b37f8142b, type: 3}
   m_Name: Colectible
   m_EditorClassIdentifier: 
+  id: 3
   type: 2
   Asset: {fileID: 5741366396192716845, guid: 82db440105e9f364c869cc268ed17068, type: 3}
   actionType: 2
