@@ -86,48 +86,111 @@ public class InventoryManager : MonoBehaviour
     }
 
     // Add an item to the inventory
-    public bool AddItem(Item item)
-    {
-        int slotlength;
-        if(!haveBackpack)
-        {
-            slotlength = 8;
+    // public bool AddItem(Item item)
+    // {
+    //     int slotlength;
+    //     if(!haveBackpack)
+    //     {
+    //         slotlength = 8;
             
-        }
-        else
-        {
-            slotlength = inventorySlots.Length;
+    //     }
+    //     else
+    //     {
+    //         slotlength = inventorySlots.Length;
 
-        }
-        // Check existing slots for stackable items
-        for(int i=0;i< slotlength;i++)
+    //     }
+    //     // Check existing slots for stackable items
+    //     for(int i=0;i< slotlength;i++)
+    //     {
+    //         InventorySlot slot = inventorySlots[i];
+    //         draggableItem itemInSlot = slot.GetComponentInChildren<draggableItem>(); 
+    //         if(itemInSlot != null && itemInSlot.item == item && itemInSlot.count<MaxStackSize && itemInSlot.item.stackable == true )
+    //         {
+    //             // Increment stack count and refresh display
+    //             itemInSlot.count++;
+    //             itemInSlot.RefreshCount();
+    //             return true;
+    //         }
+    //         if(itemInSlot.item.type == Item.ItemType.Weapon)
+    //         {
+    //             Debug.Log("A weapon is already in inventory, remove it to pick a new one");
+    //             return false;
+    //         }
+    //     }
+
+    //     // If no stackable slot found, look for empty slot to spawn new item
+    //     for(int i=0;i< slotlength;i++)
+    //     {
+    //         InventorySlot slot = inventorySlots[i];
+    //         draggableItem itemInSlot = slot.GetComponentInChildren<draggableItem>(); 
+    //         if(itemInSlot == null)
+    //         {
+    //             // Spawn new item in the empty slot
+    //             SpawnNewItem(item,slot);
+    //             return true;
+    //         }
+    //     }
+
+    //     return false; // Inventory full, unable to add item
+    // }
+
+    public bool AddItem(Item item)
         {
-            InventorySlot slot = inventorySlots[i];
-            draggableItem itemInSlot = slot.GetComponentInChildren<draggableItem>(); 
-            if(itemInSlot != null && itemInSlot.item == item && itemInSlot.count<MaxStackSize && itemInSlot.item.stackable == true)
+            int slotlength;
+            if (!haveBackpack)
             {
-                // Increment stack count and refresh display
-                itemInSlot.count++;
-                itemInSlot.RefreshCount();
-                return true;
+                slotlength = 8;
             }
-        }
-
-        // If no stackable slot found, look for empty slot to spawn new item
-        for(int i=0;i< slotlength;i++)
-        {
-            InventorySlot slot = inventorySlots[i];
-            draggableItem itemInSlot = slot.GetComponentInChildren<draggableItem>(); 
-            if(itemInSlot == null)
+            else
             {
-                // Spawn new item in the empty slot
-                SpawnNewItem(item,slot);
-                return true;
+                slotlength = inventorySlots.Length;
             }
+
+            bool hasWeapon = false;
+
+            // Check existing slots for stackable items and weapons
+            for (int i = 0; i < slotlength; i++)
+            {
+                InventorySlot slot = inventorySlots[i];
+                draggableItem itemInSlot = slot.GetComponentInChildren<draggableItem>();
+                
+                if (itemInSlot != null && itemInSlot.item == item && itemInSlot.count < MaxStackSize && itemInSlot.item.stackable)
+                {
+                    // Increment stack count and refresh display
+                    itemInSlot.count++;
+                    itemInSlot.RefreshCount();
+                    return true;
+                }
+
+                if (itemInSlot != null && itemInSlot.item.type == Item.ItemType.Weapon)
+                {
+                    hasWeapon = true;
+                }
+            }
+
+            // If a weapon is already in inventory, throw a log message
+            if (hasWeapon && item.type == Item.ItemType.Weapon)
+            {
+                Debug.Log("A weapon is already in inventory, remove it to pick a new one");
+                return false;
+            }
+
+            // If no stackable slot found, look for empty slot to spawn new item
+            for (int i = 0; i < slotlength; i++)
+            {
+                InventorySlot slot = inventorySlots[i];
+                draggableItem itemInSlot = slot.GetComponentInChildren<draggableItem>();
+                if (itemInSlot == null)
+                {
+                    // Spawn new item in the empty slot
+                    SpawnNewItem(item, slot);
+                    return true;
+                }
+            }
+
+            return false; // Inventory full, unable to add item
         }
 
-        return false; // Inventory full, unable to add item
-    }
 
     // Get selected item from the inventory
     public Item GetSelectedItem(bool use)

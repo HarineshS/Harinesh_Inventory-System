@@ -5,35 +5,29 @@ using UnityEngine;
 public class WeaponVisualsPlayer : MonoBehaviour
 {
     private Animator animator;
+    private ParticleSystem muzzleEffect;
+    private AudioSource audioSource;
+    public AudioClip shootAudio; 
+    
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
+        
+        
         
     }
 
     public void PlayVisuals()
     {
-        StartCoroutine(PlayAnimation());
+        //muzzleEffect.GetComponentInChildren<ParticleSystem>().Play();
+        animator.SetTrigger("Shoot");
+        audioSource.PlayOneShot(shootAudio);
+        
 
     }
-    IEnumerator PlayAnimation()
-    {
-        // Enable the animator
-        animator.enabled = true;
-
-        // Play the animation
-        //animator.Play("shoot");
-
-        // Wait until the animation is complete
-        while (animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1)
-        {
-            yield return null;
-        }
-
-        // Disable the animator after the animation is complete
-        animator.enabled = false;
-    }
+    
 
 
     // Update is called once per frame

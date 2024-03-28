@@ -53,8 +53,17 @@ public class InteractibleTest : MonoBehaviour, IInteractable
         else
         {
         Debug.Log("Interacting With : "+ this.gameObject.name);
-        inventoryManager.AddItem(item);
-        Destroy(gameObject);
+        if(inventoryManager.AddItem(item))
+        {
+            Destroy(gameObject);
+
+        }
+        else
+        {
+            //Debug.Log("Object not added to inventory");
+        }
+        
+        
 
         }
         
