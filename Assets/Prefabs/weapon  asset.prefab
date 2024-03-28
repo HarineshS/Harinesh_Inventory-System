@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 4273569312395688929}
   - component: {fileID: -5535947817435003191}
   - component: {fileID: 5465859276038689417}
+  - component: {fileID: 3816101101541887713}
   m_Layer: 0
   m_Name: weapon  asset
   m_TagString: Untagged
@@ -180,6 +181,27 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 9.936044, y: 7.2189016, z: 1.4152509}
   m_Center: {x: -0.04294705, y: 0.030396936, z: 0.08509248}
+--- !u!95 &3816101101541887713
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5199152465323873375}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a1977d856d790624aa73256ae94b2ac7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &9070699761809256681
 GameObject:
   m_ObjectHideFlags: 0

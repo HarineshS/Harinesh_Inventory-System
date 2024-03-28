@@ -19,7 +19,10 @@ public class PlayerController : MonoBehaviour
     {
         inputManager.inputMaster.Movement.Jump.started += _=> Jump();
         inputManager.inputMaster.Interaction.Drop.started += _=> Drop();
-        BackPack.SetActive(false);
+        if (BackPack != null)
+        {
+            BackPack.SetActive(false);
+        }
     }
 
     private void OnEnable()
@@ -40,9 +43,15 @@ public class PlayerController : MonoBehaviour
     // Method to handle the event
     private void HandleBackPackUpdate(GameObject obj)
     {
-        // Do something with the GameObject received from the event
-        Debug.Log("Received Backpack update from: " + obj.name);
-        BackPack = obj;
+        if(obj != null)
+        {
+                // Do something with the GameObject received from the event
+            Debug.Log("Received Backpack update from: " + obj.name);
+            BackPack = obj;
+
+
+        }
+        
         
     }
     private void HandleInventoryUpdate(InventoryManager invM)
@@ -71,15 +80,26 @@ public class PlayerController : MonoBehaviour
         
         if (inputManager.inputMaster.Interaction.Backpack.ReadValue<float>() == 0)
         {
-            BackPack.SetActive(false);
-            Cursor.lockState = CursorLockMode.Locked;
+            if(BackPack!= null)
+            {
+                BackPack.SetActive(false);
+                Cursor.lockState = CursorLockMode.Locked;
+
+            }
+            
         }
         else
         {
             if(inventoryManager.haveBackpack)
             {
-                BackPack.SetActive(true);
-                Cursor.lockState = CursorLockMode.None;
+                if(BackPack!=null)
+                {
+                    BackPack.SetActive(true);
+                    Cursor.lockState = CursorLockMode.None;
+
+
+                }
+                
 
             }
             

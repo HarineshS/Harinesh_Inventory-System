@@ -57,6 +57,8 @@ public class ItemVisualizer : MonoBehaviour
 
     void updateItemInHand()
 {
+    if(inventoryManager!= null)
+    {
     item = inventoryManager.GetSelectedItem(false);
 
     if (item != null)
@@ -82,6 +84,9 @@ public class ItemVisualizer : MonoBehaviour
             slot.SetActive(false);
         }
     }
+
+    }
+    
 }
 
 }

@@ -432,7 +432,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &139995707
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11041,7 +11041,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!64 &1257735712
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -13854,7 +13854,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1693339913
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15177,6 +15177,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: weapon  asset (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5199152465323873375, guid: 90e702af72ee98e4997c3a63ff14aba2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7076353851041954152, guid: 90e702af72ee98e4997c3a63ff14aba2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -16457,6 +16462,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: weapon  asset
       objectReference: {fileID: 0}
+    - target: {fileID: 5199152465323873375, guid: 90e702af72ee98e4997c3a63ff14aba2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7076353851041954152, guid: 90e702af72ee98e4997c3a63ff14aba2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -16524,6 +16534,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TestAsset
+      objectReference: {fileID: 0}
+    - target: {fileID: 5741366396192716845, guid: 82db440105e9f364c869cc268ed17068,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9016273583377381318, guid: 82db440105e9f364c869cc268ed17068,
         type: 3}

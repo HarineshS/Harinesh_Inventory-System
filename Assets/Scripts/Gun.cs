@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -35,7 +34,6 @@ public class Gun : MonoBehaviour
     
     private void HandleInventoryUpdate(InventoryManager invM)
     {
-        // Do something with the GameObject received from the event
         
         inventoryManager = invM;
         
@@ -44,7 +42,7 @@ public class Gun : MonoBehaviour
     void Start()
     {
         currentCooolDown = FireCooldown;
-        //inputManager.inputMaster.Interaction.Shoot.started += _=> Shoot();
+        
         
     }
 
@@ -59,12 +57,24 @@ public class Gun : MonoBehaviour
 
     private void checkGunEquipped()
     {
-        item = inventoryManager.GetSelectedItem(false);
-        if(item.actionType == Item.ActionType.Shoot)
+        if(inventoryManager != null)
         {
-            GunEquipped = true;
+            item = inventoryManager.GetSelectedItem(false);
+            if (item != null && item.actionType == Item.ActionType.Shoot)
+            {
+                GunEquipped = true;
+
+            }
+
+            else
+            {
+                GunEquipped = false;
+            }
+
 
         }
+        
+        
         
     }
 
