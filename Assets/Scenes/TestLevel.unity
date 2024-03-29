@@ -21245,9 +21245,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputManager: {fileID: 510301889}
   rb: {fileID: 510301890}
-  Speed: 10
-  runSpeed: 15
-  jumpForce: 200
+  Speed: 5
+  runSpeed: 8
+  jumpForce: 100
 --- !u!114 &510301889
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32900,7 +32900,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputManager: {fileID: 510301889}
-  mouseSensitivity: 5
+  mouseSensitivity: 3
   body: {fileID: 510301892}
 --- !u!1001 &784663092
 PrefabInstance:
