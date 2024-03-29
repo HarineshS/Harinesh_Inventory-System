@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     bool isGrounded;
     private GameObject BackPack;
     private InventoryManager inventoryManager;
-    public Transform handSocketTransform;
+    
 
     private void Start()
     {
@@ -46,7 +46,7 @@ public class PlayerController : MonoBehaviour
         if(obj != null)
         {
                 // Do something with the GameObject received from the event
-            Debug.Log("Received Backpack update from: " + obj.name);
+            //Debug.Log("Received Backpack update from: " + obj.name);
             BackPack = obj;
 
 

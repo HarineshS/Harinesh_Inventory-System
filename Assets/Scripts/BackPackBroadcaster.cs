@@ -7,7 +7,7 @@ public class BackPackBroadcaster : MonoBehaviour
     public static event BackPackUpdate OnBackPackUpdate;
     void Update()
     {
-        // Broadcast the Backppack game object position to any subscribed listeners
+        // Broadcast the Backppack game object to any subscribed listeners
         if (OnBackPackUpdate != null)
         {
             OnBackPackUpdate(this.gameObject);

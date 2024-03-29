@@ -16,11 +16,13 @@ public class Gun : MonoBehaviour
     private InventoryManager inventoryManager;
     public Item item;
     public bool GunEquipped = false;
+    private  bool inventoryInUse = false;
 
     private void OnEnable()
     {
         // Subscribe to the BackPackUpdate event
         InventoryManager.OnInventoryUpdate += HandleInventoryUpdate;
+        
 
     }
 
@@ -28,6 +30,7 @@ public class Gun : MonoBehaviour
     {
         // Unsubscribe from the BackPackUpdate event
         InventoryManager.OnInventoryUpdate -= HandleInventoryUpdate;
+        
     }
 
     // Method to handle the event
@@ -38,6 +41,7 @@ public class Gun : MonoBehaviour
         inventoryManager = invM;
         
     }
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -49,10 +53,22 @@ public class Gun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        checkinventoryinuse();
         checkGunEquipped();
         Shoot();
         
         
+    }
+    private void checkinventoryinuse()
+    {
+        if (inputManager.inputMaster.Interaction.Backpack.ReadValue<float>() == 0)
+        {
+            inventoryInUse = false;
+        }
+        else
+        {
+            inventoryInUse = true;
+        }
     }
 
     private void checkGunEquipped()
@@ -60,7 +76,7 @@ public class Gun : MonoBehaviour
         if(inventoryManager != null)
         {
             item = inventoryManager.GetSelectedItem(false);
-            if (item != null && item.actionType == Item.ActionType.Shoot)
+            if (item != null && item.actionType == Item.ActionType.Shoot )
             {
                 GunEquipped = true;
 
@@ -80,12 +96,12 @@ public class Gun : MonoBehaviour
 
     void Shoot()
     {
-        if(GunEquipped)
+        if(GunEquipped && inventoryInUse == false )
         {
             if(item.Automatic)
             {
 
-                    if (inputManager.inputMaster.Interaction.Shoot.ReadValue<float>() > 0)
+                    if (inputManager.inputMaster.Interaction.Shoot.ReadValue<float>() > 0 )
                     {
                         //Debug.Log("Shoot input detected");
                         if(currentCooolDown <= 0f)
@@ -99,7 +115,7 @@ public class Gun : MonoBehaviour
             }
             else
             {
-                if (inputManager.inputMaster.Interaction.Shoot.ReadValue<float>() == 1)
+                if (inputManager.inputMaster.Interaction.Shoot.ReadValue<float>() == 1 )
                     {
                         Debug.Log("Shoot input 2 detected");
                         if(currentCooolDown <= 0f)

@@ -155,6 +155,20 @@ public class InventoryManager : MonoBehaviour
             Item item = itemInSlot.item;
             if(use==true)
             {
+                if(item.actionType == Item.ActionType.Consume)
+                {
+                    itemInSlot.count--;
+                    if(itemInSlot.count<=0)
+                    {
+                        Destroy(itemInSlot.gameObject);
+                    }
+                    else
+                    {
+                        itemInSlot.RefreshCount(); // Refresh count display
+                    }
+                    return item;
+
+                }
                 // Instantiate item in the scene
                 Instantiate(item.Asset,playerObject.transform.position,Quaternion.identity);
                 // Decrease item count and destroy if count reaches zero
@@ -178,6 +192,36 @@ public class InventoryManager : MonoBehaviour
         
         //return null;
     }
+
+    public bool CheckItemInInventory(Item item)
+    {
+        int slotLength;
+        if (!haveBackpack)
+        {
+            slotLength = 8;
+        }
+        else
+        {
+            slotLength = inventorySlots.Length;
+        }
+
+        for (int i = 0; i < slotLength; i++)
+        {
+            InventorySlot slot = inventorySlots[i];
+            draggableItem itemInSlot = slot.GetComponentInChildren<draggableItem>();
+
+            // Check if itemInSlot is not null before accessing its properties
+            if (itemInSlot != null && itemInSlot.item != null && itemInSlot.item.id == item.id)
+            {
+                return true;
+            }
+        }
+
+        // If the item was not found in any inventory slot, return false
+        return false;
+    }
+
+
 
     // Spawn a new item in the specified inventory slot
     public void SpawnNewItem(Item item, InventorySlot slot)

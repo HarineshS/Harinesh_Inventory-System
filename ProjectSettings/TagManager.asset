@@ -9,6 +9,10 @@ TagManager:
   - GoldKey
   - SecretBook
   - Chest
+  - Door
+  - Lock
+  - QuestTrigger1
+  - QuestTrigger2
   layers:
   - Default
   - TransparentFX

@@ -17,5 +17,5 @@ MonoBehaviour:
   Asset: {fileID: 2923869681336747419, guid: 04b17d6ac016b8a45bc4e582ad719ea9, type: 3}
   actionType: 0
   stackable: 0
-  image: {fileID: 21300000, guid: ec991a388184d214d8c9bef68873b65a, type: 3}
+  image: {fileID: -1460970647, guid: 4a014ce39c043fe4fa2e3b7035fcf3a1, type: 3}
   Automatic: 0
